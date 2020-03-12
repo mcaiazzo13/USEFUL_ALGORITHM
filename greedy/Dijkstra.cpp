@@ -1,7 +1,7 @@
 #include <iostream>
-#include <iterator> // dijkstra
+#include <iterator> // need for Dijkstra
 #include <vector>
-#include <queue> // dijkstra
+#include <queue> // need for Dijkstra
 class Grafo{
 private:
 	vector<Nodo *> nodi;
@@ -14,7 +14,7 @@ public:
 	int Dijkstra(Nodo* start,Nodo* end);
 	~Grafo(){;}
 };
-// ------------------------------------ IMPLEMENTAZIONE
+// ------------------------------------ IMPLEMENTATION
 // costruttore
 Grafo::Grafo(int vertici,int wormhole){
 	this->vertici = vertici;
@@ -48,14 +48,14 @@ int Grafo::viaggia(Nodo *start,Nodo *end){
 	Nodo *v;
 	int w = 0;
 	while(!coda.empty()){
-		u = coda.top().first; // prendo il nodo in testa
-		coda.pop(); // estraggo il nodo
-		// ora devo scorrere tutta la lista di ADJ di u
+		u = coda.top().first; // take the head node
+		coda.pop(); // pop the head node
+		// now go through the ADJ'u with iterator
 		list<pair<Nodo *,int> >::iterator itr;
 		for(itr = u->getAdjBegin();itr != u->getAdjEnd();itr++){
-			v = (*itr).first; // nodo v
-			w = (*itr).second; // peso dell'arco di v
-			// relax
+			v = (*itr).first; // node v
+			w = (*itr).second; // v weight
+			// relax node
 			if(dist.at(v->getInfo()) > dist.at(u->getInfo())+w){
 				dist.at(v->getInfo()) = dist.at(u->getInfo())+w;
 				v->setP(u);
