@@ -34,7 +34,7 @@ Nodo* Grafo::getNodo(int n){
 }
 // Dijkstra
 int Grafo::viaggia(Nodo *start,Nodo *end){
-	// valore Nodo | chiave distanza
+	// value : node | key : weight
 	priority_queue<pair <Nodo *,int> > coda;
 	vector<int> dist;
 	int i;
